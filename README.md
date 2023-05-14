@@ -4,7 +4,8 @@
 ## Objective :
 Implement some behavioral design patterns in a project.
 
-### Iterator: In the code, the Iterator class represents an iterator object. It maintains a reference to a collection of tasks (self.tasks) and keeps track of the current position within the collection using an index (self.index).
+### Iterator: 
+In the code, the Iterator class represents an iterator object. It maintains a reference to a collection of tasks (self.tasks) and keeps track of the current position within the collection using an index (self.index).
 The next method returns the next element in the collection. It first checks if there is a next element by calling has_next(). If there is a next element, it retrieves the task at the current index, increments the index, and returns the task. If there are no more elements, it returns None.
 This adheres to the Iterator pattern, which separates the logic of accessing and traversing a collection from the underlying implementation of the collection. It provides a way to iterate over elements in a collection without exposing its internal structure.
 ```
@@ -24,7 +25,8 @@ class Iterator:
         return None
 ```
 
-### Command: There are two command classes: AddTaskCommand and DeleteTaskCommand. Both of these classes encapsulate a specific action (add_task and delete_task, respectively) that can be executed on the task_collection object.
+### Command: 
+There are two command classes: AddTaskCommand and DeleteTaskCommand. Both of these classes encapsulate a specific action (add_task and delete_task, respectively) that can be executed on the task_collection object.
 Each command class has an execute method that takes the task_collection object as an argument. When the execute method is called, it performs the corresponding action on the task_collection by calling the appropriate method (add_task or delete_task).
 This structure adheres to the Command pattern, where actions are encapsulated as command objects, providing a way to decouple the invoker from the receiver and allowing for flexibility and extensibility in the system.
 ```
@@ -44,7 +46,8 @@ class DeleteTaskCommand:
 
 ```
 
-### Chain of Responsibility: There is a base Handler class that defines the common interface for all handlers in the chain. Each specific handler, such as DescHandler and StateHandler, inherits from the Handler class and overrides the search method to handle the search request based on its own criteria.
+### Chain of Responsibility: 
+There is a base Handler class that defines the common interface for all handlers in the chain. Each specific handler, such as DescHandler and StateHandler, inherits from the Handler class and overrides the search method to handle the search request based on its own criteria.
 This structure adheres to the Chain of Responsibility pattern, where a series of handlers are chained together, and each handler has the option to handle the request or pass it along to the next handler in the chain.
 ```
 class Handler:
