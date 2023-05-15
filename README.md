@@ -77,7 +77,42 @@ class StateHandler(Handler):
         return super().search(tasks, query)
 ```
 
+### Memento: 
+The Task class has two methods related to the Memento pattern: create_memento and restore_from_memento. The create_memento method returns a TaskMemento object that captures the current state of the task, including the description and state. The restore_from_memento method accepts a TaskMemento object and restores the task's state from the memento.
 
+```
+class Task:
+...
+    def create_memento(self):
+        return TaskMemento(self.desc, self.state)
+
+    def restore_from_memento(self, memento):
+        self.desc = memento.desc
+        self.state = memento.state
+
+class TaskMemento:
+    def __init__(self, desc, state):
+        self.desc = desc
+        self.state = state
+...
+def delete_task(self, index):
+        if index < len(self.tasks):
+            task = self.tasks.pop(index)
+            memento = task.create_memento()
+            self.undo_stack.append(memento)
+            return task
+        return None
+    
+    def undo_delete(self):
+        if self.undo_stack:
+            memento = self.undo_stack.pop()
+            task = Task("", "")
+            task.restore_from_memento(memento)
+            self.tasks.append(task)
+            return len(self.tasks) - 1, task
+        return None, None
+
+```
 
 
 
